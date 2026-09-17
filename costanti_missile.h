@@ -1,0 +1,71 @@
+#ifndef COSTANTI_MISSILE_H
+#define COSTANTI_MISSILE_H
+
+/* COSTANTI FISICHE */
+#define G_ACCEL 9.80665              // m/s^2
+#define GAMMA 1.4                    // -
+#define R_GAS 287.05                // J/(kg·K)
+#define PI 3.141592653589793
+
+
+/* Atmosfera Standard USSA-1976 */
+#define DENSITA_ARIA_LIV_MARE 1.225  // kg/m^3
+#define PRESSIONE_SEA_LEVEL 101325.0 // Pa
+#define SCALE_HEIGHT 8400.0          // m (valore accettabile; 7500–8400 entrambe usate)
+#define TEMPERATURA_LIV_MARE 288.15  // K (15 °C)
+#define GRADIENTE_TERMICO_TROPOSFERA 0.0065 // K/m
+#define LIMITE_TROPOSFERA_STRATOSFERA 11000.0 // m
+#define TEMPERATURA_STRATOSFERA 216.65 // K (-56.5 °C)
+#define PRESSIONE_11KM 22632.10      // Pa
+
+/* REGIME COMPRESSIBILE */
+#define FATTORE_CORRETTIVO_MACH 2.3  // suggerito (meno aggressivo di 2.5)
+#define K_WAVE 3.5                   // wave-drag moderato
+#define B_MAX 2.3                    // Prandtl-Glauert limit
+
+/* GEOMETRIA */
+#define AREA_MISSILE 0.0133          // m^2 (tuo valore; ~127 mm diam => 0.01267; 0.0133 è accettabile)
+#define AREA_UGELLO 0.0038           // m^2 (consigliato; exit dia ≈ 69.6 mm)
+
+/* AERODINAMICA REALISTICA */
+#define LIMITE_STALLO 1.4            // Cl_max realistico per missile con canard
+#define INDUCED_DRAG_K 0.22          // 1/(pi*e*AR) realistico per low-AR missile
+
+/* GUIDANCE & STRUTTURA */
+#define COSTANTE_NAVIGAZIONE 4.0     // PN
+#define LIMIT_G_LOAD 35.0            // g (limite operativo realistico)
+#define RAGGIO_PROSSIMITA 9.0        // m
+#define ANG_GRADI_CONO_VISIONE 40    //Gradi
+#define SOGLIA_ENDGAME 1000.0        // m (distanza per entrare in modalità terminale)
+
+/* TERMICO / SICUREZZA */
+#define MAX_TEMP_STRUTTURA 600.0     // K
+#define MARGINE_SICUREZZA_TEMPERATURA 25.0          
+#define EPSILON 1e-6
+#define OVERCLOCK 0
+#define RECOVERY_FACTOR 0.89
+#define COEFF_SCAMBIO_TERMICO 0.0004
+
+
+// Codici di stato del sistema di guida
+// Codici di stato estesi
+#define STATUS_OK                 0
+
+// Limitatori Standard (Sicurezza attiva)
+#define STATUS_LIMIT_STRUCTURAL         (1 << 0)  // 1
+#define STATUS_LIMIT_AERO           (1 << 1)  // 2
+#define STATUS_LIMIT_TEMPERATURE    (1 << 2)  // 4
+#define STATUS_LIMIT_SPEED          (1 << 3)  // 8
+
+// Errori Critici
+#define STATUS_LOCK_LOST            (1 << 4)  // 16
+#define STATUS_STALL_SPEED          (1 << 5)  // 32
+
+// Overclocking 
+#define STATUS_OVERCLOCK_TEMPERATURE       (1 << 6)  // 64
+#define STATUS_OVERCLOCK_SPEED      (1 << 7)  // 128
+#define STATUS_OVERCLOCK_STRUCTURAL     (1 << 8)  // 256
+#define STATUS_OVERCLOCK_AERO       (1 << 9)  // 512
+
+
+#endif // COSTANTI_MISSILE_H
