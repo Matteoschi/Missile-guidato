@@ -4,7 +4,7 @@ import sys
 
 # Configurazione
 
-PERCORSO_CSV = r"C:\Users\Utente\Documents\coding\Fisica-v3-main\missile guidato\missile guidato\scatola_nera.csv"  # Modifica se il file è altrove
+PERCORSO_CSV = os.path.join(os.path.dirname(os.path.abspath(__file__)), "missile guidato", "scatola_nera.csv")
 SOGLIA_IMPATTO = 10.0  
 
 def analizza_volo():
